@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mvctesterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="PetID" />
+    </Key>
+    <Property Name="PetID" Type="Int32" Nullable="false" />
+    <Property Name="PetOwnerID" Type="Int32" />
+    <Property Name="PetName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PetType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Size" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MedicalConcerns" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Petowner" Relationship="Self.pet_ibfk_1" FromRole="Pet" ToRole="Petowner" />
+    <NavigationProperty Name="Vetclinics" Relationship="Self.Pets_VetClinics" FromRole="Pet" ToRole="Vetclinic" />
+  </EntityType>
+  <EntityType Name="Petowner">
+    <Key>
+      <PropertyRef Name="PetOwnerID" />
+    </Key>
+    <Property Name="PetOwnerID" Type="Int32" Nullable="false" />
+    <Property Name="PetOwnerLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PetOwnerFirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PetOwnerAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PetOwnerCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PetOwnerProvince" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PetOwnerCountry" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PetOwnerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PetOwnerPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Pets" Relationship="Self.pet_ibfk_1" FromRole="Petowner" ToRole="Pet" />
+  </EntityType>
+  <EntityType Name="Vet">
+    <Key>
+      <PropertyRef Name="VetID" />
+    </Key>
+    <Property Name="VetID" Type="Int32" Nullable="false" />
+    <Property Name="VetClinicID" Type="Int32" />
+    <Property Name="VetFirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vetclinic" Relationship="Self.vet_ibfk_1" FromRole="Vet" ToRole="Vetclinic" />
+    <NavigationProperty Name="Vetclinics" Relationship="Self.vetclinic_ibfk_1" FromRole="Vet" ToRole="Vetclinic" />
+    <NavigationProperty Name="Vetclinics1" Relationship="Self.Vet_vetclinic" FromRole="Vet" ToRole="Vetclinic" />
+  </EntityType>
+  <EntityType Name="Vetclinic">
+    <Key>
+      <PropertyRef Name="VetClinicID" />
+    </Key>
+    <Property Name="VetClinicID" Type="Int32" Nullable="false" />
+    <Property Name="VetClinicName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetClinicAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetClinicCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetClinicProvince" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetClinicCountry" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetClinicEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetClinicPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OperatingHours" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VetID" Type="Int32" />
+    <NavigationProperty Name="Vets" Relationship="Self.vet_ibfk_1" FromRole="Vetclinic" ToRole="Vet" />
+    <NavigationProperty Name="Vet" Relationship="Self.vetclinic_ibfk_1" FromRole="Vetclinic" ToRole="Vet" />
+    <NavigationProperty Name="Pets" Relationship="Self.Pets_VetClinics" FromRole="Vetclinic" ToRole="Pet" />
+    <NavigationProperty Name="Vets1" Relationship="Self.Vet_vetclinic" FromRole="Vetclinic" ToRole="Vet" />
+  </EntityType>
+  <Association Name="pet_ibfk_1">
+    <End Role="Petowner" Type="Self.Petowner" Multiplicity="0..1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Petowner">
+        <PropertyRef Name="PetOwnerID" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="PetOwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="vet_ibfk_1">
+    <End Role="Vetclinic" Type="Self.Vetclinic" Multiplicity="0..1" />
+    <End Role="Vet" Type="Self.Vet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vetclinic">
+        <PropertyRef Name="VetClinicID" />
+      </Principal>
+      <Dependent Role="Vet">
+        <PropertyRef Name="VetClinicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="vetclinic_ibfk_1">
+    <End Role="Vet" Type="Self.Vet" Multiplicity="0..1" />
+    <End Role="Vetclinic" Type="Self.Vetclinic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vet">
+        <PropertyRef Name="VetID" />
+      </Principal>
+      <Dependent Role="Vetclinic">
+        <PropertyRef Name="VetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pets_VetClinics">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <End Role="Vetclinic" Type="Self.Vetclinic" Multiplicity="*" />
+  </Association>
+  <Association Name="Vet_vetclinic">
+    <End Role="Vet" Type="Self.Vet" Multiplicity="*" />
+    <End Role="Vetclinic" Type="Self.Vetclinic" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="mvctesterEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Pets" EntityType="Self.Pet" />
+    <EntitySet Name="Petowners" EntityType="Self.Petowner" />
+    <EntitySet Name="Vets" EntityType="Self.Vet" />
+    <EntitySet Name="Vetclinics" EntityType="Self.Vetclinic" />
+    <AssociationSet Name="pet_ibfk_1" Association="Self.pet_ibfk_1">
+      <End Role="Petowner" EntitySet="Petowners" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="vet_ibfk_1" Association="Self.vet_ibfk_1">
+      <End Role="Vetclinic" EntitySet="Vetclinics" />
+      <End Role="Vet" EntitySet="Vets" />
+    </AssociationSet>
+    <AssociationSet Name="vetclinic_ibfk_1" Association="Self.vetclinic_ibfk_1">
+      <End Role="Vet" EntitySet="Vets" />
+      <End Role="Vetclinic" EntitySet="Vetclinics" />
+    </AssociationSet>
+    <AssociationSet Name="Pets_VetClinics" Association="Self.Pets_VetClinics">
+      <End Role="Pet" EntitySet="Pets" />
+      <End Role="Vetclinic" EntitySet="Vetclinics" />
+    </AssociationSet>
+    <AssociationSet Name="Vet_vetclinic" Association="Self.Vet_vetclinic">
+      <End Role="Vet" EntitySet="Vets" />
+      <End Role="Vetclinic" EntitySet="Vetclinics" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

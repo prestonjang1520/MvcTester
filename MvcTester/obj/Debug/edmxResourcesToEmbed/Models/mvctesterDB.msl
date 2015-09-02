@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mvctesterModelStoreContainer" CdmEntityContainer="mvctesterEntities1">
+    <EntitySetMapping Name="Pets">
+      <EntityTypeMapping TypeName="mvctesterModel.Pet">
+        <MappingFragment StoreEntitySet="Pet">
+          <ScalarProperty Name="PetID" ColumnName="PetID" />
+          <ScalarProperty Name="PetOwnerID" ColumnName="PetOwnerID" />
+          <ScalarProperty Name="PetName" ColumnName="PetName" />
+          <ScalarProperty Name="PetType" ColumnName="PetType" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="MedicalConcerns" ColumnName="MedicalConcerns" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Petowners">
+      <EntityTypeMapping TypeName="mvctesterModel.Petowner">
+        <MappingFragment StoreEntitySet="Petowner">
+          <ScalarProperty Name="PetOwnerID" ColumnName="PetOwnerID" />
+          <ScalarProperty Name="PetOwnerLastName" ColumnName="PetOwnerLastName" />
+          <ScalarProperty Name="PetOwnerFirstName" ColumnName="PetOwnerFirstName" />
+          <ScalarProperty Name="PetOwnerAddress" ColumnName="PetOwnerAddress" />
+          <ScalarProperty Name="PetOwnerCity" ColumnName="PetOwnerCity" />
+          <ScalarProperty Name="PetOwnerProvince" ColumnName="PetOwnerProvince" />
+          <ScalarProperty Name="PetOwnerCountry" ColumnName="PetOwnerCountry" />
+          <ScalarProperty Name="PetOwnerEmail" ColumnName="PetOwnerEmail" />
+          <ScalarProperty Name="PetOwnerPhone" ColumnName="PetOwnerPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vets">
+      <EntityTypeMapping TypeName="mvctesterModel.Vet">
+        <MappingFragment StoreEntitySet="Vet">
+          <ScalarProperty Name="VetID" ColumnName="VetID" />
+          <ScalarProperty Name="VetClinicID" ColumnName="VetClinicID" />
+          <ScalarProperty Name="VetFirstName" ColumnName="VetFirstName" />
+          <ScalarProperty Name="VetLastName" ColumnName="VetLastName" />
+          <ScalarProperty Name="VetPhone" ColumnName="VetPhone" />
+          <ScalarProperty Name="VetEmail" ColumnName="VetEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vetclinics">
+      <EntityTypeMapping TypeName="mvctesterModel.Vetclinic">
+        <MappingFragment StoreEntitySet="Vetclinic">
+          <ScalarProperty Name="VetClinicID" ColumnName="VetClinicID" />
+          <ScalarProperty Name="VetClinicName" ColumnName="VetClinicName" />
+          <ScalarProperty Name="VetClinicAddress" ColumnName="VetClinicAddress" />
+          <ScalarProperty Name="VetClinicCity" ColumnName="VetClinicCity" />
+          <ScalarProperty Name="VetClinicProvince" ColumnName="VetClinicProvince" />
+          <ScalarProperty Name="VetClinicCountry" ColumnName="VetClinicCountry" />
+          <ScalarProperty Name="VetClinicEmail" ColumnName="VetClinicEmail" />
+          <ScalarProperty Name="VetClinicPhone" ColumnName="VetClinicPhone" />
+          <ScalarProperty Name="OperatingHours" ColumnName="OperatingHours" />
+          <ScalarProperty Name="VetID" ColumnName="VetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Pets_VetClinics" TypeName="mvctesterModel.Pets_VetClinics" StoreEntitySet="Pets_VetClinics">
+      <EndProperty Name="Pet">
+        <ScalarProperty Name="PetID" ColumnName="PetID" />
+      </EndProperty>
+      <EndProperty Name="Vetclinic">
+        <ScalarProperty Name="VetClinicID" ColumnName="VetClinicID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Vet_vetclinic" TypeName="mvctesterModel.Vet_vetclinic" StoreEntitySet="Vet_vetclinic">
+      <EndProperty Name="Vet">
+        <ScalarProperty Name="VetID" ColumnName="VetID" />
+      </EndProperty>
+      <EndProperty Name="Vetclinic">
+        <ScalarProperty Name="VetClinicID" ColumnName="VetClinicID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
