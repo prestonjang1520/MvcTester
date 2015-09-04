@@ -13,7 +13,30 @@ namespace MvcTester.Controllers
         {
             mvctesterEntities1 _db = new mvctesterEntities1();
             ViewBag.Message = "This is my MVC & Database Tester Application.";
-            ViewData.Model = (from m in _db.Pets select m).ToList();
+
+            List<Pet> pets = _db.Pets.ToList();
+            List<Petowner> owners = _db.Petowners.ToList();
+            Dictionary<Petowner, List<Pet>> pairs = new Dictionary<Petowner,List<Pet>>();
+
+            foreach (var o in owners)
+            {
+                List<Pet> ownersPets = new List<Pet>();
+
+                foreach (var p in pets)
+                {
+                    if (p.PetOwnerID == o.PetOwnerID)
+                    {
+                        ownersPets.Add(p);
+                    }
+                }
+
+                if (ownersPets.Count != 0)
+                {
+                    pairs.Add(o, ownersPets);
+                }
+            }
+
+            ViewData.Model = pairs;
 
             return View();
         }

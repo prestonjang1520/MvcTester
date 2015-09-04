@@ -48,6 +48,11 @@
             <td>@Html.Encode(owner.PetOwnerCountry)</td>
             <td>@Html.Encode(owner.PetOwnerEmail)</td>
             <td>@Html.Encode(owner.PetOwnerPhone)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=owner.PetOwnerID}) | 
+                @Html.ActionLink("Delete", "Delete", new { id = owner.PetOwnerID })
+            </td>
         </tr>
     }
-</table>
+</table><br/>
+<p>@Html.ActionLink("Add", "Add", "PetOwner")</p>

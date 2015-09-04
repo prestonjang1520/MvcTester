@@ -77,6 +77,6 @@ C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\
 C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\bin\ru\System.Spatial.resources.dll
 C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\obj\Debug\MvcTester.csprojResolveAssemblyReference.cache
 C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\obj\Debug\MvcTester.dll
 C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\obj\Debug\MvcTester.pdb
+C:\Users\Preston Jang\documents\visual studio 2013\Projects\MvcTester\MvcTester\obj\Debug\MvcTester.csprojResolveAssemblyReference.cache

@@ -22,16 +22,23 @@
 <h3>Pets in the system:</h3>
 <table>
     <tr>
-        <th>Pet ID</th>
-        <th>Pet Name</th>
         <th>Owner ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Pet Name</th>
+        <th>Pet ID</th>
     </tr>
 
-    @foreach (var pet in ViewData.Model){
-    <tr>
-        <td>@Html.Encode(pet.PetID)</td>
-        <td>@Html.Encode(pet.PetName)</td>
-        <td>@Html.Encode(pet.PetOwnerID)</td>
-    </tr>
+    @foreach (KeyValuePair<MvcTester.Models.Petowner, List<MvcTester.Models.Pet>> entry in ViewData.Model){
+        <tr>
+            <td>@Html.Encode(entry.Key.PetOwnerID)</td>
+            <td>@Html.Encode(entry.Key.PetOwnerFirstName)</td>
+            <td>@Html.Encode(entry.Key.PetOwnerLastName)</td>
+            @foreach (var p in entry.Value)
+            {
+                    <td>@Html.Encode(p.PetName)</td>
+                    <td>@Html.Encode(p.PetID)</td>
+            }
+        </tr>
     }
 </table>

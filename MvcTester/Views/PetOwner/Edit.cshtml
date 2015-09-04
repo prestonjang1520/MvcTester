@@ -1,0 +1,95 @@
+﻿@model MvcTester.Models.Petowner
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Petowner</legend>
+
+        @Html.HiddenFor(model => model.PetOwnerID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerLastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerLastName)
+            @Html.ValidationMessageFor(model => model.PetOwnerLastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerFirstName)
+            @Html.ValidationMessageFor(model => model.PetOwnerFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerAddress)
+            @Html.ValidationMessageFor(model => model.PetOwnerAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerCity)
+        </div>
+        <div class="editor-field"> 
+            @Html.EditorFor(model => model.PetOwnerCity)
+            @Html.ValidationMessageFor(model => model.PetOwnerCity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerProvince)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerProvince)
+            @Html.ValidationMessageFor(model => model.PetOwnerProvince)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerCountry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerCountry)
+            @Html.ValidationMessageFor(model => model.PetOwnerCountry)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerEmail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerEmail)
+            @Html.ValidationMessageFor(model => model.PetOwnerEmail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetOwnerPhone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PetOwnerPhone)
+            @Html.ValidationMessageFor(model => model.PetOwnerPhone)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

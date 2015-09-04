@@ -1,0 +1,66 @@
+﻿@model MvcTester.Models.Petowner
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                To learn more about ASP.NET MVC visit
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+                If you have any questions about ASP.NET MVC visit
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+            </p>
+        </div>
+    </section>
+}
+
+<h2>Add</h2>
+<h3>Please Enter the new Pet Owner data</h3><br/>
+@using (Html.BeginForm("Add", "PetOwner", FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true);
+    
+    <fieldset>
+        @Html.LabelFor(model => model.PetOwnerFirstName)
+        @Html.EditorFor(model => model.PetOwnerFirstName)
+        @Html.ValidationMessageFor(model => model.PetOwnerFirstName)
+
+        @Html.LabelFor(model => model.PetOwnerLastName)
+        @Html.EditorFor(model => model.PetOwnerLastName)
+        @Html.ValidationMessageFor(model => model.PetOwnerLastName)
+
+        @Html.LabelFor(model => model.PetOwnerAddress)
+        @Html.EditorFor(model => model.PetOwnerAddress)
+        @Html.ValidationMessageFor(model => model.PetOwnerAddress)
+
+        @Html.LabelFor(model => model.PetOwnerCity)
+        @Html.EditorFor(model => model.PetOwnerCity)
+        @Html.ValidationMessageFor(model => model.PetOwnerCity)
+
+        @Html.LabelFor(model => model.PetOwnerProvince)
+        @Html.EditorFor(model => model.PetOwnerProvince)
+        @Html.ValidationMessageFor(model => model.PetOwnerProvince)
+
+        @Html.LabelFor(model => model.PetOwnerCountry)
+        @Html.EditorFor(model => model.PetOwnerCountry)
+        @Html.ValidationMessageFor(model => model.PetOwnerCountry)
+
+        @Html.LabelFor(model => model.PetOwnerPhone)
+        @Html.EditorFor(model => model.PetOwnerPhone)
+        @Html.ValidationMessageFor(model => model.PetOwnerPhone)
+
+        @Html.LabelFor(model => model.PetOwnerEmail)
+        @Html.EditorFor(model => model.PetOwnerEmail)
+        @Html.ValidationMessageFor(model => model.PetOwnerEmail)
+
+        <br/><br/><input type="submit" value="Add"/>
+    </fieldset>
+}
